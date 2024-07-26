@@ -40,7 +40,21 @@ const OtpPage = () => {
         <div className="otp-column c3"></div>
         <div className="otp-column c4"></div>
         </div>
-        <button onClick={handleSubmit}>Verify</button>
+            <button
+                style={{
+                    backgroundColor: "#B4E380",
+                    transition: "background-color 0.3s, transform 0.3s",
+                }}
+                onClick={handleSubmit}
+                onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = "#deb887";
+                }}
+                onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = "#B4E380";
+                }}
+                >
+                Verify
+            </button>
         </div>
         </>
     )

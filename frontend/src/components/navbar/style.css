@@ -7,7 +7,7 @@
     min-height: 60px;
     padding: 5px;
     font-family: 'Times New Roman', Times, serif;
-    background-color:#fdef6d; 
+    background-color:#f39214; 
 
     .navbar-logo {
         display: flex;
@@ -17,7 +17,7 @@
 
         h2 {
             font-size: 30px;
-            color: #053c77;
+            color: #fff;
             cursor: pointer;
         }
     }
