@@ -34,4 +34,4 @@ const useUploadFile = () => {
     return {uploadFile, isUploadAllowed}
 }
 
-export default useUploadFile
+export default useUploadFile;

@@ -106,6 +106,9 @@ const HomePage = () => {
     border: 'none',
     borderRadius: '5px',
     transition: 'background-color 0.3s',
+    fontFamily: 'Arial, sans-serif',
+    fontSize: '16px',
+    fontWeight: 'bold',
   };
 
   const buttonHoverStyle = {
@@ -115,116 +118,131 @@ const HomePage = () => {
   return (
     <>
       <Navbar items={fileFolders} />
-      <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <button
-            onClick={handleAllowCreateFolder}
-            style={buttonStyle}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
+      <div 
+        style={{
+            backgroundImage: "url(https://res.cloudinary.com/dhja9jrwn/image/upload/v1721993928/Cover.png)",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            minHeight: '100vh',
+            width: '100%',
+            padding: '20px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        }}
           >
-            Create Folder
-          </button>
-          <input
-            ref={inputRef}
-            type="file"
-            onChange={handleFileUpload}
-            style={{
-              ...buttonStyle,
-              padding: '8px',
-              textAlign: 'center',
-            }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
-          />
-        </div>
-
-        {showCreateFolder && (
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+        <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <button
+              onClick={handleAllowCreateFolder}
+              style={buttonStyle}
+              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
+            >
+              Create Folder
+            </button>
             <input
-              type="text"
-              value={newFolder}
-              onChange={(e) => setNewFolder(e.target.value)}
-              style={{ padding: '10px', width: '200px', marginBottom: '10px' }}
-            />
-            <button
-              onClick={handleCreateFolder}
-              style={buttonStyle}
-              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
-            >
-              Yes
-            </button>
-            <button
-              onClick={() => setShowCreateFolder(false)}
-              style={buttonStyle}
-              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
-              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
-            >
-              No
-            </button>
-          </div>
-        )}
-
-        <ul style={{ display: 'flex', justifyContent: 'center', listStyle: 'none', padding: 0 }}>
-          {folderStructure.map((elem, idx) => (
-            <React.Fragment key={idx}>
-              <li onClick={() => handleBackClick(idx)} style={{ cursor: 'pointer', margin: '0 5px' }}>
-                {elem.name}
-              </li>
-              {idx < folderStructure.length - 1 && <span>/</span>}
-            </React.Fragment>
-          ))}
-        </ul>
-
-        <div style={{ marginTop: '20px' }}>
-          {displayedItems.map((elem) => (
-            <div
-              key={elem._id}
+              ref={inputRef}
+              type="file"
+              onChange={handleFileUpload}
               style={{
-                border: '1px solid #ccc',
-                padding: '10px',
-                margin: '10px 0',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
+                ...buttonStyle,
+                padding: '8px',
+                textAlign: 'center',
               }}
-              onDoubleClick={() => handleDoubleClick(elem)}
-            >
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                {elem.type === "folder" && <FaFolderOpen />}
-                {editingId === elem._id ? (
-                  <input
-                    type="text"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    onBlur={handleRenameSubmit}
-                    autoFocus
-                    style={{ marginLeft: '10px' }}
-                  />
-                ) : (
-                  <p style={{ marginLeft: '10px' }}>{elem.name}</p>
-                )}
-              </div>
-              <div>
-                <MdEdit
-                  onClick={() => handleOptions(elem._id)}
-                  style={{ marginRight: '10px', cursor: 'pointer' }}
-                />
-                {optionsVisible === elem._id && (
-                  <div style={{ display: 'inline-block', marginLeft: '10px' }}>
-                    <button onClick={() => handleRename(elem._id)} style={buttonStyle}>
-                      Rename
-                    </button>
-                    <button onClick={() => handleDelete(elem._id)} style={buttonStyle}>
-                      Delete
-                    </button>
-                  </div>
-                )}
-              </div>
+              onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
+            />
+          </div>
+
+          {showCreateFolder && (
+            <div style={{ marginTop: '20px', textAlign: 'center' }}>
+              <input
+                type="text"
+                value={newFolder}
+                onChange={(e) => setNewFolder(e.target.value)}
+                style={{ padding: '10px', width: '200px', marginBottom: '10px' }}
+              />
+              <button
+                onClick={handleCreateFolder}
+                style={buttonStyle}
+                onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
+                onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
+              >
+                Yes
+              </button>
+              <button
+                onClick={() => setShowCreateFolder(false)}
+                style={buttonStyle}
+                onMouseOver={(e) => (e.currentTarget.style.backgroundColor = buttonHoverStyle.backgroundColor)}
+                onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonStyle.backgroundColor)}
+              >
+                No
+              </button>
             </div>
-          ))}
+          )}
+
+          <ul style={{ display: 'flex', justifyContent: 'center', listStyle: 'none', padding: 0 }}>
+            {folderStructure.map((elem, idx) => (
+              <React.Fragment key={idx}>
+                <li onClick={() => handleBackClick(idx)} style={{ cursor: 'pointer', margin: '0 5px' }}>
+                  {elem.name}
+                </li>
+                {idx < folderStructure.length - 1 && <span>/</span>}
+              </React.Fragment>
+            ))}
+          </ul>
+
+          <div style={{ marginTop: '20px' }}>
+            {displayedItems.map((elem) => (
+              <div
+                key={elem._id}
+                style={{
+                  border: '1px solid #ccc',
+                  padding: '10px',
+                  margin: '10px 0',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                }}
+                onDoubleClick={() => handleDoubleClick(elem)}
+              >
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  {elem.type === "folder" && <FaFolderOpen />}
+                  {editingId === elem._id ? (
+                    <input
+                      type="text"
+                      value={newName}
+                      onChange={(e) => setNewName(e.target.value)}
+                      onBlur={handleRenameSubmit}
+                      autoFocus
+                      style={{ marginLeft: '10px' }}
+                    />
+                  ) : (
+                    <p style={{ marginLeft: '10px' }}>{elem.name}</p>
+                  )}
+                </div>
+                <div>
+                  <MdEdit
+                    onClick={() => handleOptions(elem._id)}
+                    style={{ marginRight: '10px', cursor: 'pointer' }}
+                  />
+                  {optionsVisible === elem._id && (
+                    <div style={{ display: 'inline-block', marginLeft: '10px' }}>
+                      <button onClick={() => handleRename(elem._id)} style={buttonStyle}>
+                        Rename
+                      </button>
+                      <button onClick={() => handleDelete(elem._id)} style={buttonStyle}>
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>
