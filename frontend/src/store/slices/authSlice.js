@@ -42,7 +42,7 @@ const authSlice = createSlice({
                         name: state.name, 
                         isEmailVerified: state.isEmailVerified,
                         _id: state.userId
-                     },
+                    },
                     token: state.token}));
         }
     }

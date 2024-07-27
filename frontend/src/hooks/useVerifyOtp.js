@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { appLogout, emailVerified } from "../store/slices/authSlice";
+import toast from "react-hot-toast";
 
 const useVerifyOtp = () => {
   const { token } = useSelector((e) => e.auth);
@@ -24,11 +25,11 @@ const useVerifyOtp = () => {
       } else if (data.status === "success") {
         dispatch(emailVerified());
       } else {
-        alert(data.message);
+        toast.error(data.message);
       }
     } catch (e) {
       console.log(e.message);
-      alert(e.message);
+      toast.error(e.message);
     }
   };
   return { verifyOtp };

@@ -17,6 +17,7 @@ const useGetFileFolders = () => {
                 },
             });
             const data = await res.json();
+            console.log(data)
             console.log(data.data.fileFolders);
             setFileFolders(data.data.fileFolders);
         } catch (e) {

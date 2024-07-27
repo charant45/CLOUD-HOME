@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import toast from "react-hot-toast";
 
 const useUploadFile = () => {
-    const {token} = useSelector((e) => e.auth);
+    const { token } = useSelector((e) => e.auth);
     const [isUploadAllowed, setIsUploadAllowed] = useState(true);
 
-    const uploadFile = async ({file, parentId}) => {
-        try{
+    const uploadFile = async ({ file, parentId }) => {
+        try {
             setIsUploadAllowed(false);
             let formData = new FormData();
             formData.append("file", file);
@@ -22,16 +23,16 @@ const useUploadFile = () => {
 
             console.log(res)
         }
-        catch(e) {
+        catch (e) {
             console.log(e.message);
-            alert(e.message);
+            toast.error(e.message);
         }
-        finally{
+        finally {
             setIsUploadAllowed(true);
         }
     }
 
-    return {uploadFile, isUploadAllowed}
+    return { uploadFile, isUploadAllowed }
 }
 
 export default useUploadFile;

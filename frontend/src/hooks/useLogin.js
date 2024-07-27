@@ -1,7 +1,7 @@
 // import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { appLogin } from "../store/slices/authSlice";
-
+import toast from "react-hot-toast";
 
 const useLogin = () => {
     const dispatch = useDispatch();
@@ -22,12 +22,12 @@ const useLogin = () => {
             if (data.status === "success") {
                 dispatch(appLogin(data));
                 // navigate("/");
-            } else{
-                alert(data.message);
+            } else {
+                toast.error(data.message);
             }
         } catch (e) {
             console.log(e.message);
-            alert("Signup failed: " + e.message);
+            toast.error("Signup failed: " + e.message);
 
         }
     };
