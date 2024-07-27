@@ -1,3 +1,5 @@
+/* style.css */
+
 .navbar-container {
     display: flex;
     flex-wrap: wrap;
@@ -5,50 +7,83 @@
     justify-content: space-between;
     gap: 10px;
     min-height: 60px;
-    padding: 5px;
-    font-family: 'Times New Roman', Times, serif;
-    background-color:#f39214; 
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #4a90e2;
+}
 
-    .navbar-logo {
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
-        text-decoration: none;
+.navbar-left-items, .navbar-right-items {
+    display: flex;
+    align-items: center;
+}
 
-        h2 {
-            font-size: 30px;
-            color: #fff;
-            cursor: pointer;
-        }
+.navbar-logo {
+    text-decoration: none;
+}
+
+.navbar-logo h2 {
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 400px;
+    margin: 10px 0;
+}
+
+.search-input {
+    font-family: 'Arial', sans-serif;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    flex: 1;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff6f61;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #e55650;
+}
+
+@media (max-width: 600px) {
+    .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
     }
 
     .search-container {
-        display: flex;
-        align-items: center;
-        margin-right: 24px;
+    width: 100%;
+    justify-content: flex-start;
+    max-width: 100%;
+    }
 
-        input {
-            font-family: 'Times New Roman', Times, serif;
-            padding: 8px 16px;
-            font-size: 24px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-right: 8px;
-        }
+    .search-input {
+      max-width: 200px; /* Reduce size on smaller screens */
+    }
+
+    .navbar-right-items {
+    width: 100%;
+    justify-content: flex-end;
+    display: flex;
+      gap: 10px; /* Add gap between buttons */
     }
 
     button {
-        font-family: 'Times New Roman', Times, serif;
-        padding: 8px 16px;
-        font-size: 24px;
-        border: none;
-        border-radius: 5px;
-        background-color: #007BFF;
-        color: #fff;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #0056b3;
-        }
+    margin-top: 0;
     }
 }
